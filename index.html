@@ -2,236 +2,266 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Custom PC Build Form</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BitFactory PCs</title>
 
 <style>
-* { box-sizing: border-box; font-family: Arial, sans-serif; }
-
+/* ===== BASE ===== */
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
   background: black;
-  color: white;
+  color: #000;
   overflow-x: hidden;
 }
 
-.circle {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.6;
-  animation: float 30s infinite alternate;
-  z-index: 0;
+header {
+  background: #1a73e8;
+  color: black;
+  text-align: center;
+  padding: 2.5rem;
 }
 
-@keyframes float {
-  from { transform: translateY(0px); }
-  to { transform: translateY(-200px); }
-}
-
-.container {
+section {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   position: relative;
   z-index: 2;
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem;
 }
 
-.section {
-  background: rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+h2 {
+  color: #1a73e8;
 }
 
-h2 { margin-top: 0; }
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
 
-select, input, textarea {
+input, select, textarea {
   width: 100%;
-  margin-top: 0.5rem;
   padding: 0.6rem;
+  margin-top: 0.3rem;
   border-radius: 8px;
-  border: none;
-  font-size: 1rem;
-}
-
-select[multiple] {
-  height: 180px;
-}
-
-.other-input {
-  display: none;
-  margin-top: 0.5rem;
+  border: 1px solid #ccc;
 }
 
 textarea {
-  min-height: 120px;
   resize: vertical;
+}
+
+/* ===== BACKGROUND CIRCLES ===== */
+.circle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: pulse 12s infinite alternate;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  from { opacity: 0.4; }
+  to { opacity: 0.8; }
+}
+
+/* Disable circles on mobile */
+@media (max-width: 768px) {
+  .circle { display: none; }
+  body { background: black; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== BACKGROUND CIRCLES ===== -->
-<script>
-for (let i = 0; i < 18; i++) {
-  const c = document.createElement('div');
-  c.className = 'circle';
-  c.style.width = c.style.height = Math.random()*300 + 200 + 'px';
-  c.style.background = `hsla(${Math.random()*360},70%,60%,0.6)`;
-  c.style.top = Math.random()*100 + 'vh';
-  c.style.left = Math.random()*100 + 'vw';
-  document.body.appendChild(c);
-}
-</script>
+<header>
+  <h1>BitFactory PCs</h1>
+  <p>Custom PC Building Services</p>
+</header>
 
-<div class="container">
+<!-- ================= $100 BUILD ================= -->
+<section>
+<h2>$100 – Build Your Parts</h2>
 
-<!-- ===== $100 SECTION ===== -->
-<div class="section">
-<h2>$100 – Full Parts Selection</h2>
-
-<!-- CPU -->
-<label>CPU (Select all acceptable options)</label>
-<select id="cpu" multiple>
-  <optgroup label="Intel">
-    <option>i9 (13th–14th Gen)</option>
-    <option>i7 (12th–14th Gen)</option>
-    <option>i5 (11th–14th Gen)</option>
-    <option>i3 (12th–14th Gen)</option>
-  </optgroup>
-  <optgroup label="AMD">
-    <option>Ryzen 9 (7000)</option>
-    <option>Ryzen 7 (7000 / 5000)</option>
-    <option>Ryzen 5 (7000 / 5000)</option>
-    <option>Ryzen 3</option>
-  </optgroup>
-  <option>Other / Not Listed</option>
+<label>CPU</label>
+<select id="cpu">
+  <option>Intel i9</option>
+  <option>Intel i7</option>
+  <option>Intel i5</option>
+  <option>AMD Ryzen 9</option>
+  <option>AMD Ryzen 7</option>
+  <option>AMD Ryzen 5</option>
+  <option value="other">Other / Not Listed</option>
 </select>
-<input id="cpu-other" class="other-input" placeholder="Please list the CPU you want">
+<textarea id="cpuOther" placeholder="Please list CPU" style="display:none;"></textarea>
 
-<!-- GPU -->
-<label>GPU (Select all acceptable options)</label>
-<select id="gpu" multiple>
-  <optgroup label="NVIDIA RTX 50 Series">
-    <option>RTX 5050</option>
-    <option>RTX 5060</option>
-    <option>RTX 5070</option>
-    <option>RTX 5080</option>
-    <option>RTX 5090</option>
-  </optgroup>
-  <optgroup label="RTX 40 Series">
-    <option>RTX 4060</option>
-    <option>RTX 4070</option>
-    <option>RTX 4080</option>
-    <option>RTX 4090</option>
-  </optgroup>
-  <optgroup label="AMD Radeon">
-    <option>RX 7600</option>
-    <option>RX 7700 XT</option>
-    <option>RX 7800 XT</option>
-    <option>RX 7900 XT</option>
-    <option>RX 7900 XTX</option>
-  </optgroup>
-  <option>Other / Not Listed</option>
+<label>GPU</label>
+<select id="gpu">
+  <option>NVIDIA RTX 5050</option>
+  <option>NVIDIA RTX 5060</option>
+  <option>NVIDIA RTX 5070</option>
+  <option>NVIDIA RTX 5080</option>
+  <option>NVIDIA RTX 5090</option>
+  <option>AMD RX 6000 Series</option>
+  <option value="other">Other / Not Listed</option>
 </select>
-<input id="gpu-other" class="other-input" placeholder="Please list the GPU you want">
+<textarea id="gpuOther" placeholder="Please list GPU" style="display:none;"></textarea>
 
-<!-- RAM -->
 <label>RAM</label>
 <select id="ram">
-  <option>8GB DDR4 (1x8)</option>
-  <option>16GB DDR4 (2x8)</option>
-  <option>32GB DDR4 (2x16)</option>
-  <option>16GB DDR5 (2x8)</option>
-  <option>32GB DDR5 (2x16)</option>
-  <option>64GB DDR5 (2x32)</option>
-  <option>128GB DDR5 (4x32)</option>
-  <option>Other / Not Listed</option>
+  <option>8GB DDR4</option>
+  <option>16GB DDR4</option>
+  <option>32GB DDR4</option>
+  <option>32GB DDR5</option>
+  <option>64GB DDR5</option>
+  <option value="other">Other / Not Listed</option>
 </select>
-<input id="ram-other" class="other-input" placeholder="Please list your RAM configuration">
+<textarea id="ramOther" placeholder="Please list RAM" style="display:none;"></textarea>
 
-<!-- STORAGE -->
 <label>Primary SSD</label>
-<select id="ssd-primary">
+<select id="ssd1">
   <option>256GB</option>
   <option>512GB</option>
   <option>1TB</option>
   <option>2TB</option>
   <option>4TB</option>
   <option>8TB</option>
-  <option>Other / Not Listed</option>
+  <option value="other">Other / Not Listed</option>
 </select>
-<input id="ssd-other" class="other-input" placeholder="Please list primary storage">
+<textarea id="ssd1Other" placeholder="Please list SSD" style="display:none;"></textarea>
 
-<label>Secondary SSD (Optional)</label>
-<select id="ssd-secondary">
+<label>Secondary SSD</label>
+<select>
   <option>N/A</option>
   <option>512GB</option>
   <option>1TB</option>
   <option>2TB</option>
   <option>4TB</option>
-  <option>Other / Not Listed</option>
 </select>
-<input id="ssd-secondary-other" class="other-input" placeholder="Please list secondary storage">
 
-<!-- CASE / PSU / COOLING -->
-<label>PC Case</label>
-<input placeholder="Type desired case">
+<label>Case</label>
+<input placeholder="Type case name">
 
-<label>CPU Cooling</label>
-<input placeholder="Air or Liquid (model if known)">
+<label>Power Supply (600W–2000W)</label>
+<select>
+  <option>600W</option><option>750W</option><option>850W</option>
+  <option>1000W</option><option>1200W</option><option>1600W</option><option>2000W</option>
+</select>
+
+<label>Cooling</label>
+<input placeholder="Air / AIO / Custom Loop">
 
 <label>Case Fans</label>
-<input placeholder="Number / brand / RGB preference">
+<input placeholder="Fan model or quantity">
 
-<label>Power Supply</label>
-<select>
-  <option>600W</option>
-  <option>750W</option>
-  <option>850W</option>
-  <option>1000W</option>
-  <option>1200W</option>
-  <option>1600W</option>
-  <option>2000W</option>
-</select>
-
-<!-- PERIPHERALS -->
-<label>Peripherals (Keyboard, Mouse, Monitor, etc.)</label>
-<textarea placeholder="List any peripherals you want included"></textarea>
+<label>Peripherals</label>
+<textarea placeholder="Keyboard, mouse, monitor, etc"></textarea>
 
 <label>Other Components / Notes</label>
-<textarea placeholder="WiFi cards, capture cards, aesthetic requests, etc."></textarea>
+<textarea></textarea>
+</section>
 
-</div>
-</div>
+<!-- ================= $150 ================= -->
+<section>
+<h2>$150 – Parts Research</h2>
+<label>Budget ($)</label>
+<input type="number">
 
-<!-- ===== OTHER / NOT LISTED LOGIC ===== -->
+<label>Peripherals</label>
+<textarea></textarea>
+
+<label>Other Components / Notes</label>
+<textarea></textarea>
+</section>
+
+<!-- ================= $200 ================= -->
+<section>
+<h2>$200 – Target FPS Build</h2>
+<label>Budget ($)</label>
+<input type="number">
+
+<label>Target FPS</label>
+<input type="number">
+
+<label>Games Played</label>
+<textarea></textarea>
+
+<label>Peripherals</label>
+<textarea></textarea>
+
+<label>Other Notes</label>
+<textarea></textarea>
+</section>
+
+<!-- ================= $250 ================= -->
+<section>
+<h2>$250 – FPS + Workstation</h2>
+<label>Budget ($)</label>
+<input type="number">
+
+<label>Target FPS</label>
+<input type="number">
+
+<label>Games Played</label>
+<textarea></textarea>
+
+<label>Productivity / Workstation Apps</label>
+<textarea placeholder="Premiere, Blender, CAD, coding, etc"></textarea>
+
+<label>Peripherals</label>
+<textarea></textarea>
+
+<label>Other Notes</label>
+<textarea></textarea>
+</section>
+
+<!-- ================= SUBMIT ================= -->
+<section>
+<h2>Submit Build</h2>
+<label>Name</label>
+<input>
+
+<label>Email</label>
+<input type="email">
+
+<button style="margin-top:1rem;padding:1rem;font-size:1.1rem;
+background:#1a73e8;color:white;border:none;border-radius:12px;">
+Submit Request
+</button>
+</section>
+
+<!-- ===== LOGIC ===== -->
 <script>
-function handleOther(selectId, inputId, isMulti = false) {
-  const select = document.getElementById(selectId);
-  const input = document.getElementById(inputId);
-
-  select.addEventListener('change', () => {
-    let show = false;
-
-    if (isMulti) {
-      show = [...select.selectedOptions].some(o => o.text === 'Other / Not Listed');
-    } else {
-      show = select.value === 'Other / Not Listed';
-    }
-
-    input.style.display = show ? 'block' : 'none';
-    if (!show) input.value = '';
+function toggle(selectId, textareaId){
+  document.getElementById(selectId).addEventListener('change', e=>{
+    document.getElementById(textareaId).style.display =
+      e.target.value === 'other' ? 'block' : 'none';
   });
 }
+toggle('cpu','cpuOther');
+toggle('gpu','gpuOther');
+toggle('ram','ramOther');
+toggle('ssd1','ssd1Other');
 
-handleOther('cpu', 'cpu-other', true);
-handleOther('gpu', 'gpu-other', true);
-handleOther('ram', 'ram-other');
-handleOther('ssd-primary', 'ssd-other');
-handleOther('ssd-secondary', 'ssd-secondary-other');
+// Background circles
+if (window.innerWidth > 768) {
+  for(let i=0;i<18;i++){
+    const c=document.createElement('div');
+    c.className='circle';
+    const s=Math.random()*300+150;
+    c.style.width=c.style.height=s+'px';
+    c.style.background=`hsla(${Math.random()*360},70%,60%,0.6)`;
+    c.style.filter=`blur(${Math.random()*100+80}px)`;
+    c.style.top=Math.random()*100+'vh';
+    c.style.left=Math.random()*100+'vw';
+    document.body.appendChild(c);
+  }
+}
 </script>
 
 </body>
