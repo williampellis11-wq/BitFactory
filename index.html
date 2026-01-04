@@ -3,233 +3,355 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bit Factory | Custom PCs</title>
-
-  <!-- Styles -->
+  <title>BitFactory PCs</title>
   <style>
-    /* Global */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
       margin: 0;
-      background-color: #f4f6f8;
+      padding: 0;
       color: #333;
-      text-align: center;
     }
-
-    h1, h2, h3 {
-      margin: 10px 0;
-    }
-
-    p {
-      margin: 5px 0 15px 0;
-    }
-
-    a {
-      color: #1e90ff;
-      text-decoration: none;
-    }
-    
-    /* Header */
     header {
-      background-color: #ffffff;
-      padding: 60px 20px 40px 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background: #1a73e8;
+      color: white;
+      text-align: center;
+      padding: 2rem;
     }
-
     header h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+      margin: 0;
+      font-size: 3rem;
     }
-
     header p {
-      font-size: 1.2em;
-      color: #555;
+      margin-top: 1rem;
+      font-size: 1.2rem;
     }
-
-    /* Sections */
     section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .intro img {
-      max-width: 80%;
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
-
-    /* Services */
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .service-card {
-      background: #ffffff;
-      padding: 25px 20px;
-      border-radius: 15px;
-      width: 250px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    }
-
-    .service-card h3 {
-      margin-top: 0;
-      font-size: 1.3em;
-    }
-
-    .service-card p {
-      font-size: 0.95em;
-      color: #555;
-    }
-
-    .price {
-      font-weight: bold;
-      font-size: 1.2em;
-      color: #1e90ff;
-      margin-top: 10px;
-    }
-
-    /* Contact */
-    .contact p {
-      font-size: 1.1em;
-    }
-
-    /* Footer */
-    footer {
-      background: #ffffff;
-      padding: 20px;
-      font-size: 0.9em;
-      color: #777;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
-    }
-
-    /* Scroll Animation */
-    .animate {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transform: translateY(50px);
+      transition: all 0.7s ease;
     }
-
-    .appear {
+    section.animate.show {
       opacity: 1;
-      transform: translateY(0px);
+      transform: translateY(0);
     }
-
-    /* Responsive Design */
-    @media (max-width: 900px) {
-      .services {
-        flex-direction: column;
-        align-items: center;
-      }
+    h3 {
+      margin-top: 0;
+      color: #1a73e8;
     }
-
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #155cb0;
+    }
     @media (max-width: 600px) {
       header h1 {
-        font-size: 2.2em;
+        font-size: 2rem;
       }
       header p {
-        font-size: 1em;
+        font-size: 1rem;
       }
-      .intro img {
-        max-width: 100%;
-      }
-      .service-card {
-        width: 90%;
-      }
-    }
-
-    /* Images in services (optional) */
-    .service-card img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Bit Factory</h1>
-  <p>Custom PCs built for gaming, work, and everything in between!</p>
+  <h1>BitFactory PCs</h1>
+  <p>Building and customizing PCs for everyone</p>
 </header>
 
-<section class="intro animate">
-  <img src="https://images.unsplash.com/photo-1612831662599-ff8f4b3515c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fGN1c3RvbSUyMHBjfGVufDB8fHx8MTY5NDE3NjY2Nw&ixlib=rb-4.0.3&q=80&w=600" alt="Custom PC Build">
-  <h2>Welcome to BitFactory!</h2>
-  <p>We make building or buying your perfect PC simple, fun, and stress-free.</p>
+<!-- $100 Build Your Parts -->
+<section class="service-form animate">
+  <h3>$100 – Build Your Parts</h3>
+  <p>Provide the parts you want or have, and I’ll assemble your PC for you. There is a $50 upcharge for checking component compatibility. The final price includes the parts, peripherals, and labor fee.</p>
+
+  <form id="build-parts-form">
+
+    <!-- CPU -->
+    <label for="cpu">Select CPU(s):</label>
+    <select name="cpu" id="cpu" multiple>
+      <optgroup label="AMD Ryzen (5th Gen and up)">
+        <option>Ryzen 5 5600X</option>
+        <option>Ryzen 7 5800X</option>
+        <option>Ryzen 9 5900X</option>
+        <option>Ryzen 9 5950X</option>
+        <option>Ryzen 5 7600X</option>
+        <option>Ryzen 7 7700X</option>
+        <option>Ryzen 9 7900X</option>
+        <option>Ryzen 9 7950X</option>
+      </optgroup>
+      <optgroup label="Intel Core i5">
+        <option>i5-11400</option>
+        <option>i5-12400</option>
+        <option>i5-13400</option>
+        <option>i5-13500</option>
+        <option>i5-13600K</option>
+        <option>i5-13600</option>
+        <option>i5-14600</option>
+        <option>i5-14600K</option>
+      </optgroup>
+      <option>Other / Not Listed</option>
+    </select>
+
+    <!-- GPU -->
+    <label for="gpu">Select GPU(s):</label>
+    <select name="gpu" id="gpu" multiple>
+      <!-- NVIDIA 50, 40, 30, GTX series -->
+      <optgroup label="NVIDIA RTX 50 Series">
+        <option>RTX 5090</option>
+        <option>RTX 5080</option>
+        <option>RTX 5070 Ti</option>
+        <option>RTX 5070</option>
+        <option>RTX 5060 Ti</option>
+        <option>RTX 5060</option>
+      </optgroup>
+      <optgroup label="NVIDIA RTX 40 Series">
+        <option>RTX 4090</option>
+        <option>RTX 4080</option>
+        <option>RTX 4070 Ti</option>
+        <option>RTX 4070</option>
+        <option>RTX 4060 Ti</option>
+        <option>RTX 4060</option>
+      </optgroup>
+      <optgroup label="NVIDIA RTX 30 Series">
+        <option>RTX 3090</option>
+        <option>RTX 3080 Ti</option>
+        <option>RTX 3080</option>
+        <option>RTX 3070 Ti</option>
+        <option>RTX 3070</option>
+        <option>RTX 3060 Ti</option>
+        <option>RTX 3060</option>
+      </optgroup>
+      <optgroup label="NVIDIA GTX Series">
+        <option>GTX 1660 Ti</option>
+        <option>GTX 1660 Super</option>
+        <option>GTX 1660</option>
+        <option>GTX 1650 Super</option>
+        <option>GTX 1650</option>
+        <option>GTX 1080 Ti</option>
+        <option>GTX 1080</option>
+        <option>GTX 1070 Ti</option>
+        <option>GTX 1070</option>
+        <option>GTX 1060 Ti</option>
+        <option>GTX 1060</option>
+        <option>GTX 1050 Ti</option>
+        <option>GTX 1050</option>
+        <option>GTX 980 Ti</option>
+        <option>GTX 980</option>
+        <option>GTX 970</option>
+        <option>GTX 960</option>
+        <option>GTX 950</option>
+        <option>GTX 780 Ti</option>
+        <option>GTX 780</option>
+        <option>GTX 770</option>
+        <option>GTX 760</option>
+        <option>GTX 750 Ti</option>
+        <option>GTX 750</option>
+        <option>GTX 680</option>
+        <option>GTX 670</option>
+        <option>GTX 660 Ti</option>
+        <option>GTX 660</option>
+        <option>GTX 650 Ti</option>
+        <option>GTX 650</option>
+      </optgroup>
+      <!-- AMD RX / Radeon -->
+      <optgroup label="AMD RX 7000 Series">
+        <option>RX 7900 XTX</option>
+        <option>RX 7900 XT</option>
+        <option>RX 7800 XT</option>
+        <option>RX 7700 XT</option>
+      </optgroup>
+      <optgroup label="AMD RX 6000 Series">
+        <option>RX 6950 XT</option>
+        <option>RX 6900 XT</option>
+        <option>RX 6800 XT</option>
+        <option>RX 6800</option>
+        <option>RX 6700 XT</option>
+        <option>RX 6600 XT</option>
+      </optgroup>
+      <optgroup label="AMD RX 5000 Series">
+        <option>RX 5950 XT</option>
+        <option>RX 5900 XT</option>
+        <option>RX 5800 XT</option>
+        <option>RX 5700 XT</option>
+        <option>RX 5700</option>
+        <option>RX 5600 XT</option>
+        <option>RX 5600</option>
+        <option>RX 5500 XT</option>
+        <option>RX 5500</option>
+      </optgroup>
+      <optgroup label="AMD Older / Radeon">
+        <option>Radeon RX Vega 64</option>
+        <option>Radeon RX Vega 56</option>
+        <option>Radeon RX 590</option>
+        <option>Radeon RX 580</option>
+        <option>Radeon RX 570</option>
+        <option>Radeon RX 560</option>
+        <option>Radeon RX 550</option>
+      </optgroup>
+      <option>Other / Not Listed</option>
+    </select>
+
+    <!-- Motherboard -->
+    <label for="motherboard">Select Motherboard(s):</label>
+    <select name="motherboard" id="motherboard" multiple>
+      <optgroup label="Intel Chipsets">
+        <option>Z690</option>
+        <option>Z790</option>
+        <option>B660</option>
+        <option>B760</option>
+        <option>H610</option>
+        <option>H670</option>
+      </optgroup>
+      <optgroup label="AMD Chipsets">
+        <option>X570</option>
+        <option>B550</option>
+        <option>X670</option>
+        <option>B650</option>
+      </optgroup>
+      <option>Other / Not Listed</option>
+    </select>
+
+    <!-- Case -->
+    <label for="case">Case:</label>
+    <select name="case" id="case">
+      <option>NZXT H710</option>
+      <option>Fractal Design Meshify 2</option>
+      <option>Lian Li PC-O11</option>
+      <option>Corsair 5000D</option>
+      <option>Other / Not Listed</option>
+    </select>
+
+    <!-- PSU -->
+    <label for="psu">Power Supply Unit (PSU):</label>
+    <select name="psu" id="psu">
+      <option>Corsair RM850x (850W)</option>
+      <option>EVGA SuperNOVA 850 G5</option>
+      <option>Seasonic Focus GX-750</option>
+      <option>Other / Not Listed</option>
+    </select>
+
+    <!-- Cooling -->
+    <label for="cooling">Cooling:</label>
+    <select name="cooling" id="cooling">
+      <option>Noctua Air Cooling</option>
+      <option>Corsair AIO Liquid Cooling</option>
+      <option>Be Quiet! Air Cooling</option>
+      <option>Other / Not Listed</option>
+    </select>
+
+    <!-- Fans -->
+    <label for="fans">Case Fans:</label>
+    <select name="fans" id="fans">
+      <option>Corsair LL120 RGB</option>
+      <option>Noctua NF-A12</option>
+      <option>Be Quiet! Silent Wings 3</option>
+      <option>Other / Not Listed</option>
+    </select>
+
+    <!-- Other Notes -->
+    <label for="other">Other Components / Notes:</label>
+    <textarea id="other" name="other" rows="3" placeholder="Any other parts or specifications"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
 </section>
 
-<section class="services animate">
-  <h2>Our Services & Prices</h2>
+<!-- $150 Form -->
+<section class="service-form animate">
+  <h3>$150 – Parts Research</h3>
+  <p>If you don’t know what parts you want but have a specific budget, I will research the best parts that fit your budget. The final price includes parts, peripherals, and labor fee.</p>
+  <form id="parts-research-form">
+    <label for="budget-150">Your Budget ($):</label>
+    <input type="number" id="budget-150" name="budget-150" placeholder="e.g., 1200" required>
 
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1593642634311-3b96c1e6db0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Build Your Parts">
-    <h3>Build Your Parts</h3>
-    <p>We assemble the PC with the parts you provide.</p>
-    <p class="price">$100</p>
-  </div>
+    <label for="other-150">Other Notes / Preferences:</label>
+    <textarea id="other-150" name="other-150" rows="3" placeholder="Any other requirements"></textarea>
 
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1615874959476-06bfe872ffb5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Find Parts Within Your Budget">
-    <h3>Find Parts Within Your Budget</h3>
-    <p>We find and buy the parts + peripherals you need within your budget.</p>
-    <p class="price">$150</p>
-  </div>
-
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1587202372775-7fbd6b4b5478?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Find PC for Desired FPS">
-    <h3>Find a PC for Your Desired FPS</h3>
-    <p>We find a PC that hits the FPS you want and fits your budget.</p>
-    <p class="price">$200</p>
-  </div>
-
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1612831455544-8dbcd6cc8e92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="FPS + Productivity Optimization">
-    <h3>FPS + Productivity Optimization</h3>
-    <p>We find a PC for your desired FPS AND prioritize productivity too.</p>
-    <p class="price">$250</p>
-  </div>
-
+    <button type="submit">Submit</button>
+  </form>
 </section>
 
-<section class="contact animate">
-  <h2>Contact Us</h2>
-  <p>Email: <strong>bitfactorypcs@gmail.com</strong></p>
-  <p>We’ll help you get the perfect PC today!</p>
+<!-- $200 Form -->
+<section class="service-form animate">
+  <h3>$200 – Target FPS Build</h3>
+  <p>If you want to hit a specific FPS in a game, I will find the parts that are the best for the game you play and fit your budget. The final price includes parts, peripherals, and labor fee.</p>
+  <form id="fps-build-form">
+    <label for="budget-200">Your Budget ($):</label>
+    <input type="number" id="budget-200" name="budget-200" placeholder="e.g., 1500" required>
+
+    <label for="fps-200">Target FPS:</label>
+    <input type="number" id="fps-200" name="fps-200" placeholder="e.g., 144" required>
+
+    <label for="games-200">Which Games Do You Play?</label>
+    <textarea id="games-200" name="games-200" rows="3" placeholder="List your main games"></textarea>
+
+    <label for="other-200">Other Notes / Preferences:</label>
+    <textarea id="other-200" name="other-200" rows="3" placeholder="Any other requirements"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
 </section>
 
-<footer>
-  <p>© 2026 Bit Factory</p>
-</footer>
+<!-- $250 Form -->
+<section class="service-form animate">
+  <h3>$250 – FPS + Productivity Build</h3>
+  <p>If you want good FPS in games but also want to prioritize productivity, I will find the best parts that fit your budget and assemble them. The final price includes parts, peripherals, and labor fee.</p>
+  <form id="fps-productivity-form">
+    <label for="budget-250">Your Budget ($):</label>
+    <input type="number" id="budget-250" name="budget-250" placeholder="e.g., 2000" required>
+
+    <label for="fps-250">Target FPS:</label>
+    <input type="number" id="fps-250" name="fps-250" placeholder="e.g., 144" required>
+
+    <label for="games-250">Which Games Do You Play?</label>
+    <textarea id="games-250" name="games-250" rows="3" placeholder="List your main games"></textarea>
+
+    <label for="other-250">Other Notes / Preferences:</label>
+    <textarea id="other-250" name="other-250" rows="3" placeholder="Any other requirements"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</section>
 
 <script>
   // Scroll animation
-  const faders = document.querySelectorAll('.animate');
-  const appearOptions = {
-    threshold: 0.2,
-    rootMargin: "0px 0px -50px 0px"
-  };
-
-  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+  const sections = document.querySelectorAll('.animate');
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('appear');
-      appearOnScroll.unobserve(entry.target);
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
     });
-  }, appearOptions);
+  }, { threshold: 0.1 });
 
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-  });
+  sections.forEach(section => observer.observe(section));
 </script>
 
 </body>
