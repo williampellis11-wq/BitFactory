@@ -2,10 +2,235 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Bit Factory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bit Factory | Custom PCs</title>
+
+  <!-- Styles -->
+  <style>
+    /* Global */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f4f6f8;
+      color: #333;
+      text-align: center;
+    }
+
+    h1, h2, h3 {
+      margin: 10px 0;
+    }
+
+    p {
+      margin: 5px 0 15px 0;
+    }
+
+    a {
+      color: #1e90ff;
+      text-decoration: none;
+    }
+    
+    /* Header */
+    header {
+      background-color: #ffffff;
+      padding: 60px 20px 40px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .intro img {
+      max-width: 80%;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* Services */
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      padding: 25px 20px;
+      border-radius: 15px;
+      width: 250px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .service-card h3 {
+      margin-top: 0;
+      font-size: 1.3em;
+    }
+
+    .service-card p {
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #1e90ff;
+      margin-top: 10px;
+    }
+
+    /* Contact */
+    .contact p {
+      font-size: 1.1em;
+    }
+
+    /* Footer */
+    footer {
+      background: #ffffff;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #777;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* Scroll Animation */
+    .animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .appear {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.2em;
+      }
+      header p {
+        font-size: 1em;
+      }
+      .intro img {
+        max-width: 100%;
+      }
+      .service-card {
+        width: 90%;
+      }
+    }
+
+    /* Images in services (optional) */
+    .service-card img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
+
+<header>
   <h1>Bit Factory</h1>
-  <p>If you have the parts, I will build it, don't I will do research to find the perfect parts within your budget. Need specific FPS? I will do research to find the perfect parts and I will build it for you. I do custom PCs built for gaming, work, and everything in between!</p>
+  <p>Custom PCs built for gaming, work, and everything in between!</p>
+</header>
+
+<section class="intro animate">
+  <img src="https://images.unsplash.com/photo-1612831662599-ff8f4b3515c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fGN1c3RvbSUyMHBjfGVufDB8fHx8MTY5NDE3NjY2Nw&ixlib=rb-4.0.3&q=80&w=600" alt="Custom PC Build">
+  <h2>Welcome to BitFactory!</h2>
+  <p>We make building or buying your perfect PC simple, fun, and stress-free.</p>
+</section>
+
+<section class="services animate">
+  <h2>Our Services & Prices</h2>
+
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1593642634311-3b96c1e6db0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Build Your Parts">
+    <h3>Build Your Parts</h3>
+    <p>We assemble the PC with the parts you provide.</p>
+    <p class="price">$100</p>
+  </div>
+
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1615874959476-06bfe872ffb5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Find Parts Within Your Budget">
+    <h3>Find Parts Within Your Budget</h3>
+    <p>We find and buy the parts + peripherals you need within your budget.</p>
+    <p class="price">$150</p>
+  </div>
+
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1587202372775-7fbd6b4b5478?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Find PC for Desired FPS">
+    <h3>Find a PC for Your Desired FPS</h3>
+    <p>We find a PC that hits the FPS you want and fits your budget.</p>
+    <p class="price">$200</p>
+  </div>
+
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1612831455544-8dbcd6cc8e92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="FPS + Productivity Optimization">
+    <h3>FPS + Productivity Optimization</h3>
+    <p>We find a PC for your desired FPS AND prioritize productivity too.</p>
+    <p class="price">$250</p>
+  </div>
+
+</section>
+
+<section class="contact animate">
+  <h2>Contact Us</h2>
+  <p>Email: <strong>bitfactorypcs@gmail.com</strong></p>
+  <p>We’ll help you get the perfect PC today!</p>
+</section>
+
+<footer>
+  <p>© 2026 Bit Factory</p>
+</footer>
+
+<script>
+  // Scroll animation
+  const faders = document.querySelectorAll('.animate');
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('appear');
+      appearOnScroll.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
 </body>
 </html>
