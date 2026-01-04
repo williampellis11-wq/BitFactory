@@ -1,109 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BitFactory PCs</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #000; /* default for mobile */
-    margin: 0;
-    padding: 0;
-    color: #000; /* black text per request */
-  }
-  header {
-    background: #1a73e8;
-    color: black; /* top header text black */
-    text-align: center;
-    padding: 2rem;
-  }
-  header h1 {
-    margin: 0;
-    font-size: 3rem;
-  }
-  header p {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-  }
-  section {
-    max-width: 900px;
-    margin: 2rem auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.7s ease;
-  }
-  section.animate.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  h3 {
-    margin-top: 0;
-    color: #1a73e8;
-  }
-  label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: bold;
-  }
-  input, select, textarea, button {
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.3rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-  button {
-    background: #1a73e8;
-    color: white;
-    border: none;
-    margin-top: 1rem;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #155cb0;
-  }
-  @media (max-width: 768px) {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BitFactory PCs</title>
+  <style>
+    /* === Global Styles === */
     body {
-      background: black; /* mobile static black */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background: black;
+      overflow-x: hidden;
     }
-    header h1 {
-      font-size: 2rem;
+    header {
+      background: #1a73e8;
+      color: black;
+      text-align: center;
+      padding: 2rem;
     }
-    header p {
+    header h1 { margin: 0; font-size: 3rem; }
+    header p { margin-top: 1rem; font-size: 1.2rem; }
+
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.7s ease;
+      position: relative;
+      z-index: 1;
+    }
+    section.animate.show { opacity: 1; transform: translateY(0); }
+
+    h3 { margin-top: 0; color: #1a73e8; }
+    label { display: block; margin-top: 1rem; font-weight: bold; }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
       font-size: 1rem;
+      box-sizing: border-box;
     }
-  }
-  /* Circles background for iPad/Desktop */
-  @media (min-width: 769px) {
-    body::before {
-      content:"";
-      position:fixed;
-      top:0; left:0; width:100%; height:100%;
-      background:black;
-      z-index:-2;
+    button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      margin-top: 1rem;
+      cursor: pointer;
     }
-    .circle {
-      position: fixed;
-      border-radius: 50%;
-      z-index: -1;
-      pointer-events: none;
-      opacity:0.6;
-      animation: float linear infinite;
+    button:hover { background: #155cb0; }
+
+    /* Circles for background */
+    @media (min-width: 769px) {
+      .circle {
+        position: fixed;
+        border-radius: 50%;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.6;
+        animation: float linear infinite;
+      }
+      @keyframes float {
+        0% { transform: translate(0,0); }
+        50% { transform: translate(50px,50px); }
+        100% { transform: translate(0,0); }
+      }
     }
-    @keyframes float {
-      0% {transform: translate(0,0);}
-      50% {transform: translate(50px,50px);}
-      100% {transform: translate(0,0);}
+
+    /* Dropdown styling */
+    select { appearance: none; -webkit-appearance: none; -moz-appearance: none; background: #f5f5f5; border: 1px solid #ccc; border-radius: 8px; padding: 0.6rem 1rem; font-size: 1rem; cursor: pointer; position: relative; z-index:2; }
+    select:focus { outline:none; border-color:#1a73e8; box-shadow:0 0 8px rgba(26,115,232,0.5);}
+    select[multiple]{height:auto; min-height:120px; overflow-y:auto; scrollbar-width:thin; scrollbar-color:#1a73e8 #f5f5f5;}
+    select[multiple]::-webkit-scrollbar{width:8px;}
+    select[multiple]::-webkit-scrollbar-track{background:#f5f5f5;border-radius:8px;}
+    select[multiple]::-webkit-scrollbar-thumb{background-color:#1a73e8;border-radius:8px;}
+    select:hover{box-shadow:0 0 12px rgba(26,115,232,0.5);}
+    option{padding:0.5rem;}
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      select { font-size:0.9rem; }
     }
-  }
-</style>
+
+    /* Hidden text input for Other / Not Listed */
+    .other-input { display:none; margin-top:0.5rem; }
+  </style>
 </head>
 <body>
 
@@ -112,6 +103,7 @@
   <p>Building and customizing PCs for everyone</p>
 </header>
 
+<!-- $100 Build Your Parts Section -->
 <section class="service-form animate">
   <h3>$100 – Build Your Parts</h3>
   <p>Provide the parts you want or have, and I’ll assemble your PC for you. There is a $50 upcharge for checking component compatibility. The final price includes the parts, peripherals, and labor fee.</p>
@@ -121,114 +113,100 @@
     <!-- CPU -->
     <label for="cpu">Select CPU(s):</label>
     <select name="cpu" id="cpu" multiple>
-      <optgroup label="Intel">
-        <option>i9-13900K</option>
-        <option>i9-12900K</option>
-        <option>i7-13700K</option>
-        <option>i7-12700K</option>
-        <option>i5-13600K</option>
-        <option>i5-12600K</option>
-      </optgroup>
-      <optgroup label="AMD">
-        <option>Ryzen 9 7950X</option>
-        <option>Ryzen 9 7900X</option>
-        <option>Ryzen 7 7700X</option>
-        <option>Ryzen 7 5800X</option>
-        <option>Ryzen 5 7600X</option>
-        <option>Ryzen 5 5600X</option>
-      </optgroup>
-      <option>Other / Not Listed</option>
+      <optgroup label="Intel i9 Series"><option>i9-10900K</option><option>i9-11900K</option><option>i9-12900K</option><option>Other / Not Listed</option></optgroup>
+      <optgroup label="Intel i7 Series"><option>i7-10700K</option><option>i7-11700K</option><option>i7-12700K</option><option>Other / Not Listed</option></optgroup>
+      <optgroup label="Intel i5 Series"><option>i5-10600K</option><option>i5-11600K</option><option>i5-12600K</option><option>Other / Not Listed</option></optgroup>
+      <optgroup label="AMD Ryzen 9"><option>Ryzen 9 5900X</option><option>Ryzen 9 5950X</option><option>Other / Not Listed</option></optgroup>
+      <optgroup label="AMD Ryzen 7"><option>Ryzen 7 5800X</option><option>Other / Not Listed</option></optgroup>
+      <optgroup label="AMD Ryzen 5"><option>Ryzen 5 5600X</option><option>Other / Not Listed</option></optgroup>
     </select>
+    <input type="text" id="cpu-other" class="other-input" placeholder="Type your CPU here...">
 
     <!-- GPU -->
     <label for="gpu">Select GPU(s):</label>
     <select name="gpu" id="gpu" multiple>
-      <optgroup label="NVIDIA">
-        <option>RTX 5090</option>
-        <option>RTX 4090</option>
-        <option>RTX 3090</option>
-        <option>RTX 2080 Ti</option>
-        <option>RTX 1080 Ti</option>
-        <option>GTX 1080</option>
-        <option>GTX 1070</option>
-      </optgroup>
-      <optgroup label="AMD">
-        <option>RX 7900 XTX</option>
-        <option>RX 6900 XT</option>
-        <option>RX 6800 XT</option>
-        <option>RX 580</option>
-      </optgroup>
-      <option>Other / Not Listed</option>
+      <optgroup label="NVIDIA 60/50/40/30/20/10 & GTX"><option>RTX 6090</option><option>RTX 5080</option><option>RTX 4090</option><option>RTX 3090</option><option>GTX 1080 Ti</option><option>Other / Not Listed</option></optgroup>
+      <optgroup label="AMD Radeon"><option>RX 7900 XTX</option><option>RX 6900 XT</option><option>RX 580</option><option>Other / Not Listed</option></optgroup>
     </select>
+    <input type="text" id="gpu-other" class="other-input" placeholder="Type your GPU here...">
 
     <!-- Case -->
     <label for="case">Case:</label>
-    <input type="text" id="case" name="case" placeholder="Type your case here">
+    <input type="text" name="case" placeholder="Type your case here...">
 
     <!-- PSU -->
-    <label for="psu">Power Supply Unit (PSU):</label>
-    <select name="psu" id="psu">
-      <option>600W</option>
-      <option>650W</option>
-      <option>750W</option>
-      <option>850W</option>
-      <option>1000W</option>
-      <option>1200W</option>
-      <option>1500W</option>
-      <option>2000W</option>
-    </select>
+    <label for="psu">Power Supply (600W–2000W):</label>
+    <input type="number" name="psu" min="600" max="2000" placeholder="e.g., 850">
 
     <!-- Cooling -->
     <label for="cooling">Cooling:</label>
-    <input type="text" id="cooling" name="cooling" placeholder="Type your cooling preference here">
+    <input type="text" name="cooling" placeholder="Type your cooling solution...">
 
     <!-- Case Fans -->
     <label for="fans">Case Fans:</label>
-    <input type="text" id="fans" name="fans" placeholder="Type your fans preference here">
+    <input type="text" name="fans" placeholder="Type the case fans you want...">
 
     <!-- RAM -->
-    <label for="ram">RAM:</label>
+    <label for="ram">Select RAM:</label>
     <select name="ram" id="ram">
-      <option>1x8GB DDR4</option>
-      <option>2x8GB DDR4</option>
-      <option>2x16GB DDR4</option>
-      <option>4x16GB DDR4</option>
-      <option>2x16GB DDR5</option>
-      <option>4x16GB DDR5</option>
-      <option>2x32GB DDR5</option>
-      <option>4x32GB DDR5</option>
-      <option>2x64GB DDR5</option>
-      <option>4x64GB DDR5</option>
+      <option>1x 8GB DDR4</option><option>2x 16GB DDR4</option><option>2x 32GB DDR4</option><option>4x 32GB DDR4</option><option>2x 16GB DDR5</option><option>4x 32GB DDR5</option><option>4x 64GB DDR5</option><option>Other / Not Listed</option>
     </select>
+    <input type="text" id="ram-other" class="other-input" placeholder="Type your RAM here...">
 
-    <!-- SSD -->
+    <!-- SSD Primary -->
     <label for="ssd-primary">Primary SSD:</label>
     <select name="ssd-primary" id="ssd-primary">
-      <option>256GB</option>
-      <option>512GB</option>
-      <option>1TB</option>
-      <option>2TB</option>
-      <option>4TB</option>
-      <option>8TB</option>
+      <option>256GB</option><option>512GB</option><option>1TB</option><option>2TB</option><option>4TB</option><option>8TB</option><option>Other / Not Listed</option>
     </select>
+    <input type="text" id="ssd-primary-other" class="other-input" placeholder="Type your primary SSD here...">
 
-    <label for="ssd-secondary">Secondary SSD:</label>
+    <!-- SSD Secondary -->
+    <label for="ssd-secondary">Secondary SSD (or N/A):</label>
     <select name="ssd-secondary" id="ssd-secondary">
-      <option>N/A</option>
-      <option>512GB</option>
-      <option>1TB</option>
-      <option>2TB</option>
-      <option>4TB</option>
+      <option>N/A</option><option>512GB</option><option>1TB</option><option>2TB</option><option>4TB</option><option>Other / Not Listed</option>
     </select>
+    <input type="text" id="ssd-secondary-other" class="other-input" placeholder="Type your secondary SSD here...">
 
     <!-- Peripherals -->
-    <label for="peripherals">Peripherals Wanted:</label>
-    <textarea id="peripherals" name="peripherals" rows="3" placeholder="Keyboard, Mouse, Monitor, Headset, etc."></textarea>
+    <label for="peripherals-100">Peripherals Wanted:</label>
+    <textarea id="peripherals-100" name="peripherals-100" rows="2" placeholder="Keyboard, Mouse, Monitor, Headset, etc."></textarea>
 
     <!-- Other Components / Notes -->
-    <label for="other">Other Components / Notes:</label>
-    <textarea id="other" name="other" rows="3" placeholder="Any other parts or specifications"></textarea>
+    <label for="other-100">Other Components / Notes:</label>
+    <textarea id="other-100" name="other-100" rows="3" placeholder="Any other parts or specifications"></textarea>
 
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<!-- $150 Section -->
+<section class="service-form animate">
+  <h3>$150 – Parts Research</h3>
+  <p>If you don’t know exactly what parts you want but have a budget, I will research the best parts that fit your needs. The final price includes parts, peripherals, and labor fee.</p>
+  <form id="parts-research-form">
+    <label for="budget-150">Your Budget ($):</label>
+    <input type="number" id="budget-150" name="budget-150" placeholder="e.g., 1200" required>
+    <label for="peripherals-150">Peripherals Wanted:</label>
+    <textarea id="peripherals-150" name="peripherals-150" rows="3" placeholder="Keyboard, Mouse, Monitor, Headset, etc."></textarea>
+    <label for="other-150">Other Components / Notes:</label>
+    <textarea id="other-150" name="other-150" rows="3" placeholder="Any other requirements or preferences"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<!-- $200 Section -->
+<section class="service-form animate">
+  <h3>$200 – Target FPS Build</h3>
+  <p>If you want to hit a specific FPS in your games, I will research the best parts that fit your budget and performance goals. The final price includes parts, peripherals, and labor fee.</p>
+  <form id="fps-build-form">
+    <label for="budget-200">Your Budget ($):</label>
+    <input type="number" id="budget-200" name="budget-200" placeholder="e.g., 1500" required>
+    <label for="fps-200">Target FPS:</label>
+    <input type="number" id="fps-200" name="fps-200" placeholder="e.g., 144" required>
+    <label for="peripherals-200">Peripherals Wanted:</label>
+    <textarea id="peripherals-200" name="peripherals-200" rows="3" placeholder="Keyboard, Mouse, Monitor, Headset, etc."></textarea>
+    <label for="other-200">Other Components / Notes:</label>
+    <textarea id="other-200" name="other-200" rows="3" placeholder="Any other requirements or specifications"></textarea>
     <button type="submit">Submit</button>
   </form>
 </section>
@@ -238,77 +216,59 @@
   const sections = document.querySelectorAll('.animate');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
+      if(entry.isIntersecting) entry.target.classList.add('show');
     });
   }, { threshold: 0.1 });
   sections.forEach(section => observer.observe(section));
 
-  // Show text input for "Other / Not Listed"
-  function handleOtherInput(selectId) {
+  // Other / Not Listed show input
+  const showOtherInput = (selectId, inputId) => {
     const select = document.getElementById(selectId);
-    let otherInput = null;
+    const input = document.getElementById(inputId);
     select.addEventListener('change', () => {
-      const isOtherSelected = Array.from(select.selectedOptions).some(option => option.value === "Other / Not Listed");
-      if(isOtherSelected && !otherInput) {
-        otherInput = document.createElement('input');
-        otherInput.type = 'text';
-        otherInput.placeholder = `Type your custom ${selectId.toUpperCase()} here`;
-        otherInput.name = `${selectId}-custom`;
-        otherInput.style.marginTop = '0.5rem';
-        otherInput.style.width = '100%';
-        otherInput.style.padding = '0.5rem';
-        otherInput.style.borderRadius = '5px';
-        otherInput.style.border = '1px solid #ccc';
-        select.parentNode.insertBefore(otherInput, select.nextSibling);
-      } else if(!isOtherSelected && otherInput) {
-        otherInput.remove();
-        otherInput = null;
-      }
+      const options = Array.from(select.options);
+      if(options.some(o=>o.selected && o.text.includes('Other / Not Listed'))) input.style.display='block';
+      else input.style.display='none';
     });
   }
+  showOtherInput('cpu','cpu-other');
+  showOtherInput('gpu','gpu-other');
+  showOtherInput('ram','ram-other');
+  showOtherInput('ssd-primary','ssd-primary-other');
+  showOtherInput('ssd-secondary','ssd-secondary-other');
 
-  handleOtherInput('cpu');
-  handleOtherInput('gpu');
+  // === Circles background ===
+  if(window.innerWidth>=769){
+    for(let i=0;i<20;i++){
+      const circle=document.createElement('div');
+      circle.classList.add('circle');
+      const size=Math.random()*200+100;
+      circle.style.width=`${size}px`;
+      circle.style.height=`${size}px`;
+      circle.style.background=`hsla(${Math.random()*360},70%,60%,0.6)`;
+      circle.style.top=`${Math.random()*100}vh`;
+      circle.style.left=`${Math.random()*100}vw`;
+      circle.style.filter=`blur(${Math.random()*80+50}px)`;
+      circle.style.animationDuration=`${Math.random()*30+20}s`;
+      document.body.appendChild(circle);
+    }
+
+    const circles=document.querySelectorAll('.circle');
+    circles.forEach(circle=>{
+      let x=parseFloat(circle.style.left);
+      let y=parseFloat(circle.style.top);
+      const dx=(Math.random()-0.5)*0.2;
+      const dy=(Math.random()-0.5)*0.2;
+      setInterval(()=>{
+        x+=dx; y+=dy;
+        if(x>100)x=0; if(x<0)x=100;
+        if(y>100)y=0; if(y<0)y=100;
+        circle.style.left=`${x}vw`;
+        circle.style.top=`${y}vh`;
+      },50);
+    });
+  }
 </script>
 
 </body>
 </html>
-
-<!-- $150 – Parts Research -->
-<section class="service-form animate">
-  <h3>$150 – Parts Research</h3>
-  <p>If you don’t know exactly what parts you want but have a budget, I will research the best parts that fit your needs. The final price includes parts, peripherals, and labor fee.</p>
-
-  <form id="parts-research-form">
-
-    <!-- Budget -->
-    <label for="budget-150">Your Budget ($):</label>
-    <input type="number" id="budget-150" name="budget-150" placeholder="e.g., 1200" required>
-
-    <!-- Peripherals -->
-    <label for="peripherals-150">Peripherals Wanted:</label>
-    <textarea id="peripherals-150" name="peripherals-150" rows="3" placeholder="Keyboard, Mouse, Monitor, Headset, etc."></textarea>
-
-    <!-- Other Notes -->
-    <label for="other-150">Other Components / Notes:</label>
-    <textarea id="other-150" name="other-150" rows="3" placeholder="Any other requirements or preferences"></textarea>
-
-    <button type="submit">Submit</button>
-  </form>
-</section>
-
-<script>
-  // Scroll animation for $150 section
-  const sections150 = document.querySelectorAll('.animate');
-  const observer150 = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.1 });
-  sections150.forEach(section => observer150.observe(section));
-</script>
-
