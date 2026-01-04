@@ -7,25 +7,32 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
       margin: 0;
       padding: 0;
-      color: #333;
+      color: #000;
+      background: black; /* default mobile background */
+      overflow-x: hidden;
     }
+
+    /* Header */
     header {
       background: #1a73e8;
-      color: white;
+      color: black;
       text-align: center;
       padding: 2rem;
     }
+
     header h1 {
       margin: 0;
       font-size: 3rem;
     }
+
     header p {
       margin-top: 1rem;
       font-size: 1.2rem;
     }
+
+    /* Sections */
     section {
       max-width: 900px;
       margin: 2rem auto;
@@ -37,19 +44,23 @@
       transform: translateY(50px);
       transition: all 0.7s ease;
     }
+
     section.animate.show {
       opacity: 1;
       transform: translateY(0);
     }
+
     h3 {
       margin-top: 0;
       color: #1a73e8;
     }
+
     label {
       display: block;
       margin-top: 1rem;
       font-weight: bold;
     }
+
     input, select, textarea, button {
       width: 100%;
       padding: 0.5rem;
@@ -59,6 +70,7 @@
       font-size: 1rem;
       box-sizing: border-box;
     }
+
     button {
       background: #1a73e8;
       color: white;
@@ -66,17 +78,83 @@
       margin-top: 1rem;
       cursor: pointer;
     }
+
     button:hover {
       background: #155cb0;
     }
-    @media (max-width: 600px) {
+
+    /* Custom dropdowns */
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    select[multiple] {
+      height: auto;
+      min-height: 120px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #1a73e8 #f5f5f5;
+    }
+
+    select[multiple]::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    select[multiple]::-webkit-scrollbar-track {
+      background: #f5f5f5;
+      border-radius: 8px;
+    }
+
+    select[multiple]::-webkit-scrollbar-thumb {
+      background-color: #1a73e8;
+      border-radius: 8px;
+    }
+
+    option {
+      padding: 0.5rem;
+    }
+
+    input[type=text], textarea, input[list] {
+      background: #f5f5f5;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
       header h1 {
         font-size: 2rem;
       }
       header p {
         font-size: 1rem;
       }
+      select {
+        font-size: 0.9rem;
+      }
     }
+
+    /* Circles for desktop/tablet background */
+    @media (min-width: 769px) {
+      body {
+        background: black;
+      }
+      .circle {
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        mix-blend-mode: screen;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -96,7 +174,25 @@
     <!-- CPU -->
     <label for="cpu">Select CPU(s):</label>
     <select name="cpu" id="cpu" multiple>
-      <optgroup label="AMD Ryzen (5th Gen and up)">
+      <optgroup label="Intel i9 Series">
+        <option>i9-10900K</option>
+        <option>i9-11900K</option>
+        <option>i9-12900K</option>
+        <option>i9-13900K</option>
+      </optgroup>
+      <optgroup label="Intel i7 Series">
+        <option>i7-10700K</option>
+        <option>i7-11700K</option>
+        <option>i7-12700K</option>
+        <option>i7-13700K</option>
+      </optgroup>
+      <optgroup label="Intel i5 Series">
+        <option>i5-10600K</option>
+        <option>i5-11600K</option>
+        <option>i5-12600K</option>
+        <option>i5-13600K</option>
+      </optgroup>
+      <optgroup label="AMD Ryzen">
         <option>Ryzen 5 5600X</option>
         <option>Ryzen 7 5800X</option>
         <option>Ryzen 9 5900X</option>
@@ -106,24 +202,13 @@
         <option>Ryzen 9 7900X</option>
         <option>Ryzen 9 7950X</option>
       </optgroup>
-      <optgroup label="Intel Core i5">
-        <option>i5-11400</option>
-        <option>i5-12400</option>
-        <option>i5-13400</option>
-        <option>i5-13500</option>
-        <option>i5-13600K</option>
-        <option>i5-13600</option>
-        <option>i5-14600</option>
-        <option>i5-14600K</option>
-      </optgroup>
       <option>Other / Not Listed</option>
     </select>
 
     <!-- GPU -->
     <label for="gpu">Select GPU(s):</label>
     <select name="gpu" id="gpu" multiple>
-      <!-- NVIDIA 50, 40, 30, GTX series -->
-      <optgroup label="NVIDIA RTX 50 Series">
+      <optgroup label="NVIDIA 50 Series">
         <option>RTX 5090</option>
         <option>RTX 5080</option>
         <option>RTX 5070 Ti</option>
@@ -131,7 +216,7 @@
         <option>RTX 5060 Ti</option>
         <option>RTX 5060</option>
       </optgroup>
-      <optgroup label="NVIDIA RTX 40 Series">
+      <optgroup label="NVIDIA 40 Series">
         <option>RTX 4090</option>
         <option>RTX 4080</option>
         <option>RTX 4070 Ti</option>
@@ -139,7 +224,7 @@
         <option>RTX 4060 Ti</option>
         <option>RTX 4060</option>
       </optgroup>
-      <optgroup label="NVIDIA RTX 30 Series">
+      <optgroup label="NVIDIA 30 Series">
         <option>RTX 3090</option>
         <option>RTX 3080 Ti</option>
         <option>RTX 3080</option>
@@ -148,12 +233,16 @@
         <option>RTX 3060 Ti</option>
         <option>RTX 3060</option>
       </optgroup>
-      <optgroup label="NVIDIA GTX Series">
-        <option>GTX 1660 Ti</option>
-        <option>GTX 1660 Super</option>
-        <option>GTX 1660</option>
-        <option>GTX 1650 Super</option>
-        <option>GTX 1650</option>
+      <optgroup label="NVIDIA 20 Series">
+        <option>RTX 2080 Ti</option>
+        <option>RTX 2080 Super</option>
+        <option>RTX 2080</option>
+        <option>RTX 2070 Super</option>
+        <option>RTX 2070</option>
+        <option>RTX 2060 Super</option>
+        <option>RTX 2060</option>
+      </optgroup>
+      <optgroup label="NVIDIA 10 Series / GTX">
         <option>GTX 1080 Ti</option>
         <option>GTX 1080</option>
         <option>GTX 1070 Ti</option>
@@ -162,40 +251,18 @@
         <option>GTX 1060</option>
         <option>GTX 1050 Ti</option>
         <option>GTX 1050</option>
-        <option>GTX 980 Ti</option>
-        <option>GTX 980</option>
-        <option>GTX 970</option>
-        <option>GTX 960</option>
-        <option>GTX 950</option>
-        <option>GTX 780 Ti</option>
-        <option>GTX 780</option>
-        <option>GTX 770</option>
-        <option>GTX 760</option>
-        <option>GTX 750 Ti</option>
-        <option>GTX 750</option>
-        <option>GTX 680</option>
-        <option>GTX 670</option>
-        <option>GTX 660 Ti</option>
-        <option>GTX 660</option>
-        <option>GTX 650 Ti</option>
-        <option>GTX 650</option>
       </optgroup>
-      <!-- AMD RX / Radeon -->
-      <optgroup label="AMD RX 7000 Series">
+      <optgroup label="AMD RX 7000/6000/5000">
         <option>RX 7900 XTX</option>
         <option>RX 7900 XT</option>
         <option>RX 7800 XT</option>
         <option>RX 7700 XT</option>
-      </optgroup>
-      <optgroup label="AMD RX 6000 Series">
         <option>RX 6950 XT</option>
         <option>RX 6900 XT</option>
         <option>RX 6800 XT</option>
         <option>RX 6800</option>
         <option>RX 6700 XT</option>
         <option>RX 6600 XT</option>
-      </optgroup>
-      <optgroup label="AMD RX 5000 Series">
         <option>RX 5950 XT</option>
         <option>RX 5900 XT</option>
         <option>RX 5800 XT</option>
@@ -206,74 +273,98 @@
         <option>RX 5500 XT</option>
         <option>RX 5500</option>
       </optgroup>
-      <optgroup label="AMD Older / Radeon">
-        <option>Radeon RX Vega 64</option>
-        <option>Radeon RX Vega 56</option>
-        <option>Radeon RX 590</option>
-        <option>Radeon RX 580</option>
-        <option>Radeon RX 570</option>
-        <option>Radeon RX 560</option>
-        <option>Radeon RX 550</option>
-      </optgroup>
-      <option>Other / Not Listed</option>
-    </select>
-
-    <!-- Motherboard -->
-    <label for="motherboard">Select Motherboard(s):</label>
-    <select name="motherboard" id="motherboard" multiple>
-      <optgroup label="Intel Chipsets">
-        <option>Z690</option>
-        <option>Z790</option>
-        <option>B660</option>
-        <option>B760</option>
-        <option>H610</option>
-        <option>H670</option>
-      </optgroup>
-      <optgroup label="AMD Chipsets">
-        <option>X570</option>
-        <option>B550</option>
-        <option>X670</option>
-        <option>B650</option>
-      </optgroup>
       <option>Other / Not Listed</option>
     </select>
 
     <!-- Case -->
     <label for="case">Case:</label>
-    <select name="case" id="case">
-      <option>NZXT H710</option>
-      <option>Fractal Design Meshify 2</option>
-      <option>Lian Li PC-O11</option>
-      <option>Corsair 5000D</option>
-      <option>Other / Not Listed</option>
-    </select>
+    <input type="text" id="case" name="case" placeholder="Enter case name or model">
+
+    <!-- Case Fans -->
+    <label for="fans">Case Fans:</label>
+    <input type="text" id="fans" name="fans" placeholder="Enter fan type or model">
 
     <!-- PSU -->
     <label for="psu">Power Supply Unit (PSU):</label>
     <select name="psu" id="psu">
-      <option>Corsair RM850x (850W)</option>
-      <option>EVGA SuperNOVA 850 G5</option>
-      <option>Seasonic Focus GX-750</option>
-      <option>Other / Not Listed</option>
+      <option>600W</option>
+      <option>650W</option>
+      <option>700W</option>
+      <option>750W</option>
+      <option>800W</option>
+      <option>850W</option>
+      <option>900W</option>
+      <option>1000W</option>
+      <option>1200W</option>
+      <option>1400W</option>
+      <option>1600W</option>
+      <option>1800W</option>
+      <option>2000W</option>
     </select>
 
     <!-- Cooling -->
     <label for="cooling">Cooling:</label>
-    <select name="cooling" id="cooling">
-      <option>Noctua Air Cooling</option>
-      <option>Corsair AIO Liquid Cooling</option>
-      <option>Be Quiet! Air Cooling</option>
-      <option>Other / Not Listed</option>
-    </select>
+    <input type="text" id="cooling" name="cooling" placeholder="Enter cooling solution">
 
-    <!-- Fans -->
-    <label for="fans">Case Fans:</label>
-    <select name="fans" id="fans">
-      <option>Corsair LL120 RGB</option>
-      <option>Noctua NF-A12</option>
-      <option>Be Quiet! Silent Wings 3</option>
-      <option>Other / Not Listed</option>
-    </select>
+    <!-- SSD -->
+    <label for="ssd-primary">Primary SSD:</label>
+    <input list="ssd-primary-options" id="ssd-primary" name="ssd-primary" placeholder="Select or type primary SSD">
+    <datalist id="ssd-primary-options">
+      <option value="256GB NVMe PCIe Gen4">
+      <option value="512GB NVMe PCIe Gen4">
+      <option value="1TB NVMe PCIe Gen4">
+      <option value="2TB NVMe PCIe Gen4">
+      <option value="4TB NVMe PCIe Gen4">
+      <option value="8TB NVMe PCIe Gen4">
+      <option value="256GB SATA SSD">
+      <option value="512GB SATA SSD">
+      <option value="1TB SATA SSD">
+      <option value="2TB SATA SSD">
+      <option value="4TB SATA SSD">
+      <option value="8TB SATA SSD">
+      <option value="Other / Not Listed">
+    </datalist>
+
+    <label for="ssd-secondary">Secondary SSD (Optional, type N/A if none):</label>
+    <input list="ssd-secondary-options" id="ssd-secondary" name="ssd-secondary" placeholder="Select or type secondary SSD (N/A if none)">
+    <datalist id="ssd-secondary-options">
+      <option value="512GB NVMe PCIe Gen4">
+      <option value="1TB NVMe PCIe Gen4">
+      <option value="2TB NVMe PCIe Gen4">
+      <option value="4TB NVMe PCIe Gen4">
+      <option value="512GB SATA SSD">
+      <option value="1TB SATA SSD">
+      <option value="2TB SATA SSD">
+      <option value="4TB SATA SSD">
+      <option value="N/A">
+      <option value="Other / Not Listed">
+    </datalist>
+
+    <!-- RAM -->
+    <label for="ram-primary">RAM:</label>
+    <input list="ram-primary-options" id="ram-primary" name="ram-primary" placeholder="Select or type RAM (e.g., 2x16GB DDR4)">
+    <datalist id="ram-primary-options">
+      <option value="1x8GB DDR4">
+      <option value="2x8GB DDR4">
+      <option value="1x16GB DDR4">
+      <option value="2x16GB DDR4">
+      <option value="4x16GB DDR4">
+      <option value="1x32GB DDR4">
+      <option value="2x32GB DDR4">
+      <option value="4x32GB DDR4">
+      <option value="1x8GB DDR5">
+      <option value="2x8GB DDR5">
+      <option value="1x16GB DDR5">
+      <option value="2x16GB DDR5">
+      <option value="4x16GB DDR5">
+      <option value="1x32GB DDR5">
+      <option value="2x32GB DDR5">
+      <option value="4x32GB DDR5">
+      <option value="1x64GB DDR5">
+      <option value="2x64GB DDR5">
+      <option value="4x64GB DDR5">
+      <option value="Other / Not Listed">
+    </datalist>
 
     <!-- Peripherals -->
     <label for="peripherals-100">Peripherals Wanted:</label>
@@ -282,72 +373,6 @@
     <!-- Other Notes -->
     <label for="other">Other Components / Notes:</label>
     <textarea id="other" name="other" rows="3" placeholder="Any other parts or specifications"></textarea>
-
-    <button type="submit">Submit</button>
-  </form>
-</section>
-
-<!-- $150 Form -->
-<section class="service-form animate">
-  <h3>$150 – Parts Research</h3>
-  <p>If you don’t know what parts you want but have a specific budget, I will research the best parts that fit your budget. The final price includes parts, peripherals, and labor fee.</p>
-  <form id="parts-research-form">
-    <label for="budget-150">Your Budget ($):</label>
-    <input type="number" id="budget-150" name="budget-150" placeholder="e.g., 1200" required>
-
-    <label for="peripherals-150">Peripherals Wanted:</label>
-    <textarea id="peripherals-150" name="peripherals-150" rows="2" placeholder="Keyboard, Mouse, Monitor, Headset, etc."></textarea>
-
-    <label for="other-150">Other Notes / Preferences:</label>
-    <textarea id="other-150" name="other-150" rows="3" placeholder="Any other requirements"></textarea>
-
-    <button type="submit">Submit</button>
-  </form>
-</section>
-
-<!-- $200 Form -->
-<section class="service-form animate">
-  <h3>$200 – Target FPS Build</h3>
-  <p>If you want to hit a specific FPS in a game, I will find the parts that are the best for the game you play and fit your budget. The final price includes parts, peripherals, and labor fee.</p>
-  <form id="fps-build-form">
-    <label for="budget-200">Your Budget ($):</label>
-    <input type="number" id="budget-200" name="budget-200" placeholder="e.g., 1500" required>
-
-    <label for="fps-200">Target FPS:</label>
-    <input type="number" id="fps-200" name="fps-200" placeholder="e.g., 144" required>
-
-    <label for="games-200">Which Games Do You Play?</label>
-    <textarea id="games-200" name="games-200" rows="3" placeholder="List your main games"></textarea>
-
-    <label for="peripherals-200">Peripherals Wanted:</label>
-    <textarea id="peripherals-200" name="peripherals-200" rows="2" placeholder="Keyboard, Mouse, Monitor, Headset, etc."></textarea>
-
-    <label for="other-200">Other Notes / Preferences:</label>
-    <textarea id="other-200" name="other-200" rows="3" placeholder="Any other requirements"></textarea>
-
-    <button type="submit">Submit</button>
-  </form>
-</section>
-
-<!-- $250 Form -->
-<section class="service-form animate">
-  <h3>$250 – FPS + Productivity Build</h3>
-  <p>If you want good FPS in games but also want to prioritize productivity, I will find the best parts that fit your budget and assemble them. The final price includes parts, peripherals, and labor fee.</p>
-  <form id="fps-productivity-form">
-    <label for="budget-250">Your Budget ($):</label>
-    <input type="number" id="budget-250" name="budget-250" placeholder="e.g., 2000" required>
-
-    <label for="fps-250">Target FPS:</label>
-    <input type="number" id="fps-250" name="fps-250" placeholder="e.g., 144" required>
-
-    <label for="games-250">Which Games Do You Play?</label>
-    <textarea id="games-250" name="games-250" rows="3" placeholder="List your main games"></textarea>
-
-    <label for="peripherals-250">Peripherals Wanted:</label>
-    <textarea id="peripherals-250" name="peripherals-250" rows="2" placeholder="Keyboard, Mouse, Monitor, Headset, etc."></textarea>
-
-    <label for="other-250">Other Notes / Preferences:</label>
-    <textarea id="other-250" name="other-250" rows="3" placeholder="Any other requirements"></textarea>
 
     <button type="submit">Submit</button>
   </form>
@@ -365,7 +390,52 @@
   }, { threshold: 0.1 });
 
   sections.forEach(section => observer.observe(section));
+
+  // === Animated color circles for desktop/tablet ===
+  if(window.innerWidth >= 769){
+    const addCircles = (count=25) => {
+      for(let i=0;i<count;i++){
+        const circle = document.createElement('div');
+        circle.classList.add('circle');
+        const size = Math.random()*300 + 150;
+        circle.style.width = `${size}px`;
+        circle.style.height = `${size}px`;
+        circle.style.top = `${Math.random()*100}vh`;
+        circle.style.left = `${Math.random()*100}vw`;
+        circle.style.background = `hsla(${Math.random()*360},70%,60%,0.6)`;
+        circle.style.filter = `blur(${Math.random()*100+80}px)`;
+        circle.style.animation = `move ${Math.random()*25+10}s infinite alternate`;
+        document.body.appendChild(circle);
+      }
+    };
+    addCircles();
+  }
 </script>
+
+<style>
+  /* Circle animation */
+  @keyframes move {
+    0%{transform: translate(0,0);}
+    100%{transform: translate(50px,50px);}
+  }
+</style>
 
 </body>
 </html>
+
+<!-- Additional Peripherals -->
+<section class="service-form animate">
+  <h3>Peripherals & Other Components</h3>
+  <form id="peripherals-other-form">
+
+    <!-- Peripherals -->
+    <label for="peripherals">Peripherals Wanted:</label>
+    <textarea id="peripherals" name="peripherals" rows="3" placeholder="Keyboard, Mouse, Monitor, Headset, etc."></textarea>
+
+    <!-- Other Notes -->
+    <label for="other-components">Other Components / Notes:</label>
+    <textarea id="other-components" name="other-components" rows="3" placeholder="Any other parts or specifications"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</section>
